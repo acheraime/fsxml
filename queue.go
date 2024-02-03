@@ -1,21 +1,19 @@
-package callcenter
+package fsxml
 
 import (
 	"encoding/xml"
 	"strconv"
-
-	"github.com/acheraime/fsxml"
 )
 
 type Queue struct {
-	XMLName xml.Name     `xml:"queue"`
-	Name    string       `xml:"name,attr"`
-	Params  fsxml.Params `xml:"param"`
+	XMLName xml.Name `xml:"queue"`
+	Name    string   `xml:"name,attr"`
+	Params  Params   `xml:"param"`
 }
 
 func (q *Queue) addParam(name QueueParam, value string) {
 	pname := string(name)
-	param := fsxml.Param{
+	param := Param{
 		Name:  pname,
 		Value: value,
 	}

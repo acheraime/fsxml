@@ -1,4 +1,6 @@
-package callcenter
+package fsxml
+
+import "encoding/xml"
 
 type QueueParam string
 
@@ -39,3 +41,23 @@ const (
 	QueueScore  TimeBaseScoreType = "queue"
 	SystemScore TimeBaseScoreType = "system"
 )
+
+type Agent struct {
+	XMLName         xml.Name `xml:"agent"`
+	Name            string   `xml:"name,attr"`
+	Type            string   `xml:"type,attr"`
+	Contact         string   `xml:"contact,attr"`
+	Status          string   `xml:"status,attr"`
+	MaxNoAnswer     string   `xml:"max-no-answer,attr"`
+	WrapUpTime      string   `xml:"wrap-up-time,attr"`
+	RejectDelayTime string   `xml:"reject-delay-time,attr"`
+	BusyDelayTime   string   `xml:"busy-delay-time,attr"`
+}
+
+type Tier struct {
+	XMLName  xml.Name `xml:"tier"`
+	Agent    string   `xml:"agent,attr"`
+	Queue    string   `xml:"queue,attr"`
+	Level    string   `xml:"level,attr"`
+	Position string   `xml:"position,attr"`
+}

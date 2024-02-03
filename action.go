@@ -1,28 +1,8 @@
-package dialplan
+package fsxml
 
 import (
 	"encoding/xml"
 	"strconv"
-
-	"github.com/acheraime/fsxml"
-)
-
-type DialplanApplication string
-
-const (
-	SetApplication        DialplanApplication = "set"
-	PlaybackApplication   DialplanApplication = "playback"
-	CallCenterApplication DialplanApplication = "callcenter"
-	VoicemailApplication  DialplanApplication = "voicemail"
-	TransferApplication   DialplanApplication = "transfer"
-	HangupApplication     DialplanApplication = "hangup"
-	BridgeApplication     DialplanApplication = "bridge"
-	SleepApplication      DialplanApplication = "sleep"
-	AnswerApplication     DialplanApplication = "answer"
-	ConferenceApplication DialplanApplication = "conference"
-	ExportApplication     DialplanApplication = "export"
-	LogApplication        DialplanApplication = "log"
-	BindMetaApplication   DialplanApplication = "bind_meta_app"
 )
 
 type Action struct {
@@ -33,7 +13,7 @@ type Action struct {
 }
 
 func NewAction(application DialplanApplication, data string) Action {
-	return Action{Application: application, Data: fsxml.String(data)}
+	return Action{Application: application, Data: String(data)}
 }
 
 func (a *Action) SetInline(flag bool) {
@@ -52,7 +32,7 @@ func Hangup() Action {
 	return NewAction(HangupApplication, "")
 }
 
-func CallCenter(data string) Action {
+func WithCallCenter(data string) Action {
 	return NewAction(CallCenterApplication, data)
 }
 

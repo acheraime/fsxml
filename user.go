@@ -1,22 +1,20 @@
-package directory
+package fsxml
 
 import (
 	"encoding/xml"
 	"strconv"
-
-	"github.com/acheraime/fsxml"
 )
 
 type User struct {
-	XMLName   xml.Name        `xml:"user"`
-	ID        string          `xml:"id,attr"`
-	Mailbox   string          `xml:"mailbox,attr,omitempty"`
-	Params    fsxml.Params    `xml:"params>param,omitempty"`
-	Variables fsxml.Variables `xml:"variables>variable,omitempty"`
+	XMLName   xml.Name  `xml:"user"`
+	ID        string    `xml:"id,attr"`
+	Mailbox   string    `xml:"mailbox,attr,omitempty"`
+	Params    Params    `xml:"params>param,omitempty"`
+	Variables Variables `xml:"variables>variable,omitempty"`
 }
 
 func (u *User) addParam(name UserParam, value string) {
-	param := fsxml.Param{
+	param := Param{
 		Name:  string(name),
 		Value: value,
 	}
@@ -25,7 +23,7 @@ func (u *User) addParam(name UserParam, value string) {
 }
 
 func (u *User) addVariable(name UserVariable, value string) {
-	variable := fsxml.Variable{
+	variable := Variable{
 		Name:  string(name),
 		Value: value,
 	}

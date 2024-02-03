@@ -1,4 +1,4 @@
-package directory
+package fsxml
 
 type DirectoryParam string
 

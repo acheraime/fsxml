@@ -1,4 +1,4 @@
-package dialplan
+package fsxml
 
 import (
 	"encoding/xml"
